@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/presentacion", "destination": "/presentacion.html" },
+    { "source": "/app", "destination": "/index-react.html" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

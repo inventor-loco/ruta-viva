@@ -1,0 +1,37 @@
+/* ============================================================
+   Ruta Viva — Design Tokens (paleta oficial)
+   Reutilizable por index.html (landing) y presentacion.html (deck).
+   ============================================================ */
+
+:root {
+  /* — Marca / Brand oficial — */
+  --rv-verde-monte:     #2D5A27; /* Verde Monte — titulares / marca / trazo principal */
+  --rv-naranja-almagre: #E06031; /* Naranja Almagre — acento, dato clave, CTA, ruta */
+  --rv-arena:           #F7F5F0; /* Arena — fondo */
+  --rv-texto:           #2A2A22; /* Texto base */
+
+  /* — Roles semánticos — */
+  --rv-bg:             var(--rv-arena);
+  --rv-surface:        #FFFFFF;
+  --rv-surface-soft:   #FBFAF6;
+  --rv-ink:            var(--rv-texto);
+  --rv-muted:          #6B6A5E;        /* texto secundario, sin dominar */
+  --rv-primary:        var(--rv-verde-monte);
+  --rv-primary-deep:   #214019;        /* verde más oscuro */
+  --rv-accent:         var(--rv-naranja-almagre);
+  --rv-accent-soft:    #EC8A5F;        /* almagre claro */
+  --rv-border:         #E4E0D4;
+  --rv-line:           #C9D3BF;        /* verde desaturado para líneas/relieve */
+
+  /* — Sombras / radios — */
+  --rv-shadow:    0 18px 48px rgba(42, 42, 34, 0.14);
+  --rv-shadow-sm: 0 8px 22px rgba(42, 42, 34, 0.10);
+  --rv-radius:    8px;
+  --rv-radius-lg: 18px;
+  --rv-radius-pill: 999px;
+  --rv-max-width: 1180px;
+
+  /* — Tipografía — */
+  --rv-font-heading: Outfit, "Plus Jakarta Sans", ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --rv-font-body:    Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
