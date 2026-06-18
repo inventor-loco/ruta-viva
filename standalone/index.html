@@ -73,7 +73,7 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
    ============================================================ */
 .hero{padding:clamp(36px,6vh,68px) 0 clamp(40px,6vh,64px);overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,5vw,64px);align-items:center}
-.hero-logo{width:min(72vw,300px);margin-bottom:18px;mix-blend-mode:multiply}
+.hero-logo{width:min(84vw,450px);margin-bottom:14px;mix-blend-mode:multiply}
 .hero h1{font-size:clamp(32px,5.6vw,62px);max-width:14ch;line-height:1.02}
 .hero .sub{margin-top:18px;font-size:clamp(17px,2vw,22px);color:var(--muted);max-width:34ch;font-weight:500}
 .hero-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
@@ -111,6 +111,17 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
   .hero-visual{margin-top:24px}
   .hf1{right:2%}.hf2{left:0}
 }
+@media(max-width:620px){
+  .hero{padding:28px 0 24px}
+  .hero-logo{margin-bottom:8px}
+  .hero .sub{margin-top:12px}
+  .hero-cta{margin-top:20px;gap:10px}
+  .chips-proof{margin-top:18px;gap:8px}
+  .hero-cta .btn{font-size:14px;padding:.68em 1.05em}
+  .chip-proof{font-size:12px;padding:.42em .8em}
+  .hero-visual,.scroll-cue{display:none}
+  #como{padding-top:48px}
+}
 
 /* ============================================================
    SECTION SHELL
@@ -132,7 +143,14 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
 .step .sl{font-family:var(--fh);font-weight:800;font-size:17px;color:var(--verde)}
 .step.hl .sl{color:var(--almagre)}
 .step .sd{font-size:13px;color:var(--muted);line-height:1.3}
+.passport-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.passport-mode{background:var(--surface-soft);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow-sm)}
+.passport-mode .pm-icon{width:46px;height:46px;border-radius:13px;background:rgba(45,90,39,.08);color:var(--verde);display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 auto}
+.passport-mode.physical .pm-icon{background:rgba(224,96,49,.12);color:var(--almagre)}
+.passport-mode .pm-title{font-family:var(--fh);font-weight:900;color:var(--verde);font-size:15.5px;line-height:1.1}
+.passport-mode .pm-copy{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.3}
 @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}.steps .step:last-child{grid-column:1/-1}}
+@media(max-width:620px){.passport-modes{grid-template-columns:1fr}.passport-mode{padding:14px 15px}}
 
 /* ============================================================
    DEMO
@@ -383,6 +401,16 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
         <div class="step hl"><span class="num">03</span><div class="si"><svg class="icon"><use href="#i-ai"/></svg></div><div class="sl">Descubre</div><div class="sd">Parada según tu tiempo</div></div>
         <div class="step"><span class="num">04</span><div class="si"><svg class="icon"><use href="#i-route"/></svg></div><div class="sl">Recorre</div><div class="sd">Sigue la ruta</div></div>
         <div class="step"><span class="num">05</span><div class="si"><svg class="icon"><use href="#i-data"/></svg></div><div class="sl">Medimos</div><div class="sd">Datos al territorio</div></div>
+      </div>
+      <div class="passport-modes reveal" aria-label="Formatos del pasaporte Ruta Viva">
+        <div class="passport-mode">
+          <div class="pm-icon"><svg class="icon"><use href="#i-qr"/></svg></div>
+          <div><div class="pm-title">Pasaporte digital (QR)</div><div class="pm-copy">Se activa escaneando el QR del local.</div></div>
+        </div>
+        <div class="passport-mode physical">
+          <div class="pm-icon"><svg class="icon"><use href="#i-stamp"/></svg></div>
+          <div><div class="pm-title">Pasaporte físico</div><div class="pm-copy">Cartilla sellada en cada parada.</div></div>
+        </div>
       </div>
     </div>
   </section>
