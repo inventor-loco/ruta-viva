@@ -221,8 +221,8 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
 .map-legend .lg{display:inline-flex;align-items:center;gap:7px}
 .map-legend .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
 .map-disc{font-size:12px;color:var(--muted);font-style:italic;padding:0 20px 14px}
-.rv-pin-label{font-family:var(--fb);font-weight:600}
-.place-label{font-family:var(--fh);font-weight:700;fill:var(--verde)}
+.rv-pin-label{font-family:var(--fb);font-weight:600;paint-order:stroke;stroke:#F7F5F0;stroke-width:5px;stroke-linejoin:round}
+.place-label{font-family:var(--fh);font-weight:700;fill:var(--verde);paint-order:stroke;stroke:#F7F5F0;stroke-width:5px;stroke-linejoin:round}
 
 /* ============================================================
    DASHBOARD
@@ -517,84 +517,80 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
           </defs>
           <rect width="1000" height="820" fill="url(#terrain)"/>
 
-          <!-- Laderas de medianías: San Mateo más alto al suroeste, bajada hacia Las Palmas al nordeste -->
-          <g opacity=".9">
-            <path d="M0 820 L0 610 C100 560 190 500 296 430 C420 348 540 260 700 176 C810 118 912 70 1000 28 L1000 820 Z" fill="#EEF2DE"/>
-            <path d="M0 820 L0 714 C112 657 230 584 360 492 C500 392 642 302 820 210 C900 168 955 138 1000 104 L1000 820 Z" fill="#DDE8CC" opacity=".72"/>
-            <path d="M0 820 L0 735 C160 690 290 628 414 535 C545 436 680 352 850 270 C918 237 965 212 1000 186 L1000 820 Z" fill="#CAD8B9" opacity=".44"/>
+          <!-- Proyección real: equirectangular con cos(lat≈28°)=0.883, bbox de San Mateo/Santa Brígida/Monte Lentiscal/Las Palmas -->
+          <g id="geo-real" data-projection="x=(lng*0.883-bboxMin)/(bboxMax-bboxMin), y=(maxLat-lat)/(maxLat-minLat)" data-bbox="lat 28.013..28.100, lng -15.532..-15.420">
+            <!-- Laderas y fondo del valle: San Mateo alto al suroeste, descenso hacia Las Palmas al noreste -->
+            <path d="M0 820 L0 585 C80 626 151 662 225 710 C309 764 408 816 548 820 L0 820 Z" fill="#CEDDBE" opacity=".54"/>
+            <path d="M0 0 L1000 0 L1000 210 C864 259 742 328 612 432 C501 521 411 610 300 706 C226 770 166 808 108 820 L0 820 Z" fill="#EEF2DE" opacity=".88"/>
+            <path d="M0 0 L1000 0 L1000 122 C835 188 700 286 575 404 C462 512 365 613 244 714 C174 773 118 804 58 820 L0 820 Z" fill="#DDE8CC" opacity=".52"/>
+            <path d="M92 790 C178 730 247 690 338 625 C454 542 545 448 662 342 C758 254 838 178 932 91 L1000 0 L1000 164 C850 273 721 392 594 504 C466 617 344 720 205 820 L90 820 Z" fill="url(#valleyFloor)" opacity=".82"/>
           </g>
 
-          <!-- Fondo del valle del Guiniguada -->
-          <path d="M78 728 C164 654 232 584 334 505 C436 426 538 340 658 260 C770 184 876 116 983 57 L1000 98 C890 154 782 222 674 296 C552 379 454 466 356 542 C252 623 170 689 92 758 Z" fill="url(#valleyFloor)" opacity=".9"/>
-
-          <!-- Curvas de nivel reales de valle: no concéntricas, abrazan las laderas -->
-          <g fill="none" stroke="#B8C6A8" stroke-width="2" opacity=".62" stroke-linecap="round">
-            <path d="M24 586 C126 532 232 466 350 382 C474 293 610 214 760 148 C842 112 924 78 992 40"/>
-            <path d="M32 636 C138 579 250 510 374 421 C494 335 625 260 786 188 C866 151 934 118 998 78"/>
-            <path d="M38 684 C156 626 278 551 404 459 C532 365 660 292 828 224 C897 196 956 162 1000 132"/>
-            <path d="M42 734 C182 670 310 592 438 498 C568 401 700 326 866 262 C925 239 972 216 1000 194"/>
-            <path d="M92 790 C228 728 350 654 472 562 C604 464 732 388 898 324 C948 305 982 286 1000 270"/>
-          </g>
-          <g fill="none" stroke="#D4C19B" stroke-width="1.7" opacity=".52" stroke-linecap="round">
-            <path d="M0 420 C96 374 184 318 282 246 C392 166 526 106 680 58 C768 30 864 16 990 10"/>
-            <path d="M0 468 C112 414 218 348 330 270 C444 191 582 126 736 78 C828 50 918 34 1000 28"/>
-            <path d="M0 520 C126 458 244 388 360 306 C486 218 620 160 780 114 C856 92 928 74 1000 58"/>
-            <path d="M0 574 C132 506 260 430 392 337 C526 242 660 188 824 144 C892 126 948 108 1000 94"/>
-          </g>
-          <g fill="none" stroke="#9AAD8D" stroke-width="1.5" opacity=".46" stroke-linecap="round">
-            <path d="M62 804 C202 740 318 668 428 579 C548 482 674 404 840 338 C910 310 960 286 1000 252"/>
-            <path d="M188 820 C304 754 410 680 514 590 C624 494 746 420 908 362 C950 347 982 330 1000 313"/>
-            <path d="M310 820 C404 754 496 686 598 604 C706 517 812 452 956 402 C976 395 990 388 1000 380"/>
-          </g>
-
-          <!-- Barranco del Guiniguada y tributarios -->
+          <!-- Curvas de nivel transversales al valle; pocas y no concéntricas -->
           <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M96 738 C172 676 218 612 286 558 C356 502 412 452 466 402 C552 322 632 268 724 210 C820 150 896 100 970 62" stroke="#6F8F75" stroke-width="12" opacity=".16"/>
-            <path d="M96 738 C172 676 218 612 286 558 C356 502 412 452 466 402 C552 322 632 268 724 210 C820 150 896 100 970 62" stroke="#52755F" stroke-width="3.4" stroke-dasharray="3 10"/>
-            <path d="M220 676 C268 632 306 604 356 554 C390 520 426 488 466 450" stroke="#7FA18D" stroke-width="2.4" opacity=".7" stroke-dasharray="2 10"/>
-            <path d="M496 518 C548 462 598 426 662 386 C720 350 768 320 820 270" stroke="#7FA18D" stroke-width="2.4" opacity=".7" stroke-dasharray="2 10"/>
-            <path d="M650 160 C680 188 704 206 736 224" stroke="#7FA18D" stroke-width="2" opacity=".55" stroke-dasharray="2 10"/>
+            <g stroke="#B8C6A8" stroke-width="2.1" opacity=".66">
+              <path d="M12 648 C86 676 174 708 260 748"/>
+              <path d="M34 574 C140 611 247 652 354 700"/>
+              <path d="M78 498 C206 540 338 592 472 658"/>
+              <path d="M148 420 C298 470 452 536 604 612"/>
+              <path d="M236 336 C410 394 583 470 742 552"/>
+              <path d="M350 244 C516 308 706 404 884 506"/>
+              <path d="M498 142 C654 214 812 318 972 424"/>
+            </g>
+            <g stroke="#D4C19B" stroke-width="1.6" opacity=".48">
+              <path d="M0 708 C92 724 175 756 244 808"/>
+              <path d="M98 780 C198 731 296 675 398 592"/>
+              <path d="M212 820 C352 730 475 632 600 508"/>
+              <path d="M642 0 C751 84 856 170 982 252"/>
+            </g>
           </g>
 
-          <!-- GC-15 / Carretera del Centro -->
-          <path d="M112 686 C204 650 284 586 360 524 C444 454 514 385 596 318 C674 254 762 188 858 132 C902 106 940 84 972 58" fill="none" stroke="#D8C9A8" stroke-width="12" opacity=".92" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M112 686 C204 650 284 586 360 524 C444 454 514 385 596 318 C674 254 762 188 858 132 C902 106 940 84 972 58" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="11 13" opacity=".92" stroke-linecap="round"/>
+          <!-- Barranco del Guiniguada: cauce paralelo al eje real del valle -->
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M104 768 C154 746 188 727 225 710 C260 693 286 657 320 626 C370 582 398 552 448 522 C570 449 690 300 905 118" stroke="#6F8F75" stroke-width="13" opacity=".16"/>
+            <path d="M104 768 C154 746 188 727 225 710 C260 693 286 657 320 626 C370 582 398 552 448 522 C570 449 690 300 905 118" stroke="#52755F" stroke-width="3.4" stroke-dasharray="3 10"/>
+            <path d="M238 818 C245 768 276 721 320 682" stroke="#7FA18D" stroke-width="2.2" opacity=".58" stroke-dasharray="2 10"/>
+            <path d="M372 706 C402 652 452 608 520 568" stroke="#7FA18D" stroke-width="2.2" opacity=".58" stroke-dasharray="2 10"/>
+            <path d="M608 438 C670 394 720 338 764 268" stroke="#7FA18D" stroke-width="2.2" opacity=".58" stroke-dasharray="2 10"/>
+          </g>
+
+          <!-- GC-15 / Carretera del Centro: San Mateo -> La Angostura -> Santa Brígida -> Monte Lentiscal -> Las Palmas -->
+          <path d="M80 740 C126 732 164 716 207.5 702.1 C247 689 265 651 297.5 618.6 C334 582 377 574 425 550.3 C610 452 750 250 920 80" fill="none" stroke="#D8C9A8" stroke-width="13" opacity=".94" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M80 740 C126 732 164 716 207.5 702.1 C247 689 265 651 297.5 618.6 C334 582 377 574 425 550.3 C610 452 750 250 920 80" fill="none" stroke="#fff" stroke-width="2.2" stroke-dasharray="11 13" opacity=".95" stroke-linecap="round"/>
 
           <!-- etiquetas de lectura territorial -->
-          <g font-family="Outfit, system-ui" font-weight="800" font-size="15" fill="#6B6A5E">
-            <text x="456" y="386" transform="rotate(-39 456 386)">Barranco del Guiniguada</text>
-            <text x="590" y="338" transform="rotate(-38 590 338)">GC-15 · Carretera del Centro</text>
-            <text x="104" y="620" fill="#7A8F68">800 m</text>
-            <text x="306" y="485" fill="#8B9B71">650 m</text>
-            <text x="820" y="170" fill="#8B846F">500 m</text>
-            <text x="890" y="42" fill="#8B846F">hacia Las Palmas</text>
+          <g font-family="Outfit, system-ui" font-weight="800" font-size="15" fill="#6B6A5E" style="paint-order:stroke;stroke:#F7F5F0;stroke-width:4px;stroke-linejoin:round">
+            <text x="520" y="492" transform="rotate(-39 520 492)">Barranco del Guiniguada</text>
+            <text x="232" y="674" transform="rotate(-42 232 674)">GC-15 · Carretera del Centro</text>
+            <text x="92" y="704" fill="#7A8F68">850 m</text>
+            <text x="248" y="654" fill="#8B9B71">650 m</text>
+            <text x="414" y="526" fill="#8B846F">500 m</text>
+            <text x="888" y="64" fill="#8B846F" text-anchor="end">hacia Las Palmas</text>
           </g>
 
-          <!-- place anchors -->
+          <!-- núcleos proyectados por coordenadas reales -->
           <g>
-            <circle cx="585" cy="254" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="622" y="237" text-anchor="start" font-size="20">Santa Brígida</text>
-            <circle cx="894" cy="64" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="876" y="88" text-anchor="end" font-size="20">Monte Lentiscal</text>
-            <circle cx="114" cy="651" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="126" y="684" text-anchor="start" font-size="20">Vega de San Mateo</text>
-            <circle cx="452" cy="376" r="3.8" fill="#6E8B4A"/>
-            <text class="place-label" x="442" y="402" text-anchor="end" font-size="14" opacity=".78">La Angostura</text>
-            <circle cx="340" cy="506" r="3.8" fill="#6E8B4A"/>
-            <text class="place-label" x="318" y="496" text-anchor="end" font-size="14" opacity=".78">Las Meleguinas</text>
+            <circle cx="297.5" cy="618.6" r="5" fill="#2D5A27" data-lat="28.029" data-lng="-15.503"/>
+            <text class="place-label" x="278" y="636" text-anchor="end" font-size="19">Santa Brígida</text>
+            <circle cx="425" cy="550.3" r="5" fill="#2D5A27" data-lat="28.038" data-lng="-15.486"/>
+            <text class="place-label" x="444" y="540" text-anchor="start" font-size="19">Monte Lentiscal</text>
+            <circle cx="80" cy="740" r="5" fill="#2D5A27" data-lat="28.013" data-lng="-15.532"/>
+            <text class="place-label" x="106" y="792" text-anchor="start" font-size="19">Vega de San Mateo</text>
+            <circle cx="207.5" cy="702.1" r="4" fill="#6E8B4A" data-lat="28.018" data-lng="-15.515"/>
+            <text class="place-label" x="225" y="690" text-anchor="start" font-size="14" opacity=".82">La Angostura / Atalaya</text>
+            <circle cx="920" cy="80" r="4" fill="#6E8B4A" data-lat="28.100" data-lng="-15.420"/>
           </g>
 
           <!-- route + pins drawn by JS -->
           <g id="rvRoute"></g>
           <g id="rvPins"></g>
 
-          <!-- inset: Gran Canaria, zona noreste-centro marcada -->
+          <!-- inset: contorno real vectorizado de Gran Canaria, zona noreste-centro marcada -->
           <g transform="translate(40,40)">
             <rect x="-12" y="-12" width="186" height="150" rx="12" fill="#fff" opacity="0.92" stroke="#E4E0D4"/>
-            <path d="M78 6 C91 4 106 8 119 14 L132 20 C144 30 151 39 157 54 C164 72 158 91 149 104 L139 116 C128 126 112 129 99 135 C84 137 72 132 58 130 C43 126 28 119 19 106 C9 92 6 78 10 62 C13 45 24 31 38 21 C50 13 62 8 78 6 Z" fill="#E7EBDC" stroke="#2D5A27" stroke-width="2.5"/>
-            <path d="M132 20 C149 42 158 66 149 104" fill="none" stroke="#B8C6A8" stroke-width="2" opacity=".7"/>
-            <rect x="96" y="32" width="44" height="38" rx="6" fill="none" stroke="#E06031" stroke-width="2.5"/>
-            <circle cx="118" cy="51" r="4" fill="#E06031"/>
+            <path d="M138.6 69.9 C138.8 70.5 141.0 73.7 141.3 74.2 C141.5 74.6 142.1 75.3 141.6 75.8 C141.2 76.3 136.0 80.6 135.5 81.3 C135.0 81.9 134.7 84.4 134.7 85.0 C134.7 85.6 135.1 88.7 135.2 89.3 C135.3 90.0 136.0 93.4 136.0 93.9 C136.0 94.5 135.6 96.7 135.4 97.0 C135.3 97.3 134.2 97.5 133.8 97.7 C133.4 98.0 130.7 99.5 130.2 100.3 C129.6 101.0 126.8 106.8 126.5 107.6 C126.2 108.4 126.3 111.0 126.2 111.4 C126.1 111.7 125.5 112.0 125.2 112.2 C124.8 112.4 121.9 114.1 121.2 114.3 C120.5 114.4 116.8 114.2 116.1 114.3 C115.4 114.4 112.8 115.2 112.0 115.5 C111.2 115.8 105.9 118.0 105.3 118.2 C104.8 118.4 105.3 118.1 104.8 118.4 C104.3 118.6 98.8 121.4 98.1 121.7 C97.5 122.1 96.6 122.9 96.0 123.1 C95.5 123.3 91.3 123.6 90.7 124.2 C90.1 124.9 88.0 130.7 87.6 131.2 C87.3 131.8 86.5 131.8 86.0 131.9 C85.6 131.9 82.5 132.0 82.0 132.0 C81.5 132.0 79.6 131.5 78.8 131.2 C78.0 131.0 71.5 129.0 70.9 128.8 C70.3 128.6 71.1 128.8 70.4 128.7 C69.7 128.7 62.8 127.8 62.1 127.8 C61.3 127.7 60.9 128.0 60.6 127.8 C60.3 127.6 58.7 125.7 58.4 125.2 C58.0 124.8 56.1 122.4 55.4 121.8 C54.7 121.3 50.1 118.2 49.6 117.8 C49.1 117.5 49.2 117.4 48.7 117.1 C48.2 116.8 43.4 113.9 42.9 113.5 C42.4 113.2 42.6 113.0 42.1 112.6 C41.6 112.1 36.3 107.8 35.9 107.4 C35.4 107.0 36.1 107.7 35.7 107.3 C35.3 106.8 31.1 101.5 30.7 101.1 C30.3 100.6 30.7 101.2 30.6 100.9 C30.5 100.6 29.4 97.7 29.2 97.1 C29.0 96.5 28.4 93.8 28.1 93.0 C27.7 92.1 25.2 86.7 24.8 85.9 C24.3 85.1 22.5 82.9 22.2 82.4 C21.9 82.0 21.0 80.2 20.9 79.9 C20.8 79.6 20.8 79.0 20.8 78.3 C20.8 77.6 20.7 71.2 20.7 70.3 C20.7 69.5 20.4 67.4 20.4 67.0 C20.4 66.7 20.5 66.2 20.6 65.8 C20.6 65.4 21.4 62.6 21.6 61.7 C21.7 60.8 22.4 54.6 22.5 53.8 C22.5 53.0 22.4 51.7 22.5 51.4 C22.7 51.1 23.2 50.1 24.0 49.9 C24.8 49.7 31.8 49.4 32.8 48.9 C33.8 48.4 36.7 43.8 37.1 43.3 C37.4 42.9 37.0 43.1 37.3 43.0 C37.6 42.9 40.4 42.2 41.0 41.7 C41.6 41.3 45.3 37.9 45.7 37.4 C46.1 37.0 46.4 36.3 46.6 36.2 C46.7 36.0 47.7 35.4 48.1 34.9 C48.5 34.4 51.5 30.4 51.8 29.6 C52.1 28.7 51.6 24.2 51.7 23.3 C51.8 22.5 53.0 19.4 53.1 18.4 C53.2 17.4 53.1 10.6 53.3 9.8 C53.4 9.0 54.7 7.8 55.0 7.7 C55.3 7.5 56.5 7.6 57.2 7.6 C57.9 7.6 63.6 7.7 64.2 7.7 C64.9 7.7 65.8 7.6 66.3 7.5 C66.8 7.5 69.9 6.9 70.5 7.2 C71.2 7.5 74.6 11.1 75.3 11.6 C75.9 12.1 78.3 13.7 79.2 13.9 C80.0 14.1 85.6 14.2 86.5 14.2 C87.3 14.2 89.7 13.9 90.3 13.8 C90.9 13.7 93.9 12.5 94.5 12.3 C95.2 12.2 98.5 11.5 98.9 11.5 C99.4 11.5 100.3 11.7 100.6 11.8 C100.9 11.9 102.0 12.7 102.7 13.0 C103.5 13.3 108.9 16.2 110.4 15.6 C111.8 15.0 120.5 6.4 121.9 5.6 C123.3 4.8 128.3 4.8 128.9 4.8 C129.5 4.7 129.5 4.5 129.5 5.2 C129.4 5.8 128.3 12.8 128.1 14.1 C127.8 15.4 126.7 21.4 126.7 22.4 C126.7 23.4 128.1 26.2 128.1 27.0 C128.2 27.8 127.5 32.1 127.5 32.9 C127.4 33.7 127.1 36.8 127.4 37.6 C127.6 38.5 130.7 43.4 131.2 44.1 C131.7 44.8 134.2 46.3 134.5 46.8 C134.9 47.3 135.6 50.1 136.0 50.5 C136.4 51.0 139.0 52.3 139.3 52.8 C139.6 53.2 140.0 56.4 140.1 56.8 C140.2 57.2 140.4 57.1 140.2 57.8 C140.0 58.5 137.6 65.1 137.5 66.0 C137.4 66.9 138.3 69.3 138.6 69.9 Z" fill="#E7EBDC" stroke="#2D5A27" stroke-width="2.4" stroke-linejoin="round"/>
+            <rect x="103" y="26" width="42" height="44" rx="6" fill="none" stroke="#E06031" stroke-width="2.5"/>
+            <circle cx="124" cy="49" r="4" fill="#E06031"/>
             <path d="M22 24 L22 10 M22 10 L17 18 M22 10 L27 18" stroke="#2D5A27" stroke-width="2" stroke-linecap="round" fill="none"/>
             <text x="22" y="36" text-anchor="middle" font-size="10" fill="#2D5A27" font-family="Outfit,system-ui" font-weight="900">N</text>
             <text x="82" y="150" text-anchor="middle" font-size="13" fill="#6B6A5E" font-family="Outfit,system-ui" font-weight="700">Gran Canaria</text>
@@ -833,8 +829,16 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
   }
 
   // ---------- MAP PROJECTION ----------
-  var MAP={north:28.049,south:28.000,west:-15.540,east:-15.470,w:1000,h:820};
-  function proj(b){ return { x:(b.lng-MAP.west)/(MAP.east-MAP.west)*MAP.w, y:(MAP.north-b.lat)/(MAP.north-MAP.south)*MAP.h }; }
+  var MAP={w:1000,h:820,marginX:80,marginY:80,cosLat:0.883,minLat:28.013,maxLat:28.100,minLng:-15.532,maxLng:-15.420};
+  MAP.minX = MAP.minLng * MAP.cosLat;
+  MAP.maxX = MAP.maxLng * MAP.cosLat;
+  function proj(b){
+    var xLng = b.lng * MAP.cosLat;
+    return {
+      x: MAP.marginX + (xLng-MAP.minX)/(MAP.maxX-MAP.minX)*(MAP.w-MAP.marginX*2),
+      y: MAP.marginY + (MAP.maxLat-b.lat)/(MAP.maxLat-MAP.minLat)*(MAP.h-MAP.marginY*2)
+    };
+  }
 
   function fmtPoint(p){ return p.x.toFixed(1)+","+p.y.toFixed(1); }
 
@@ -913,16 +917,19 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
       // route pins (drawn on top)
       routeStops.forEach(function(b,idx){
         var labelPos = {
-          "rv-001": {labelX:42,labelY:40,anchor:"start"},
-          "rv-002": {labelX:-34,labelY:42,anchor:"end"},
-          "rv-003": {labelX:34,labelY:74,anchor:"start"}
+          "rv-001": {labelX:42,labelY:52,anchor:"start"},
+          "rv-002": {labelX:-38,labelY:-44,anchor:"end"},
+          "rv-003": {labelX:58,labelY:-50,anchor:"start"},
+          "rv-004": {labelX:48,labelY:-42,anchor:"start"},
+          "rv-005": {labelX:62,labelY:-56,anchor:"start"},
+          "rv-006": {labelX:58,labelY:-92,anchor:"start"}
         }[b.id] || {};
         pinsG.appendChild(pinEl(b,Object.assign({active:true,label:String(idx+1),color: idx===0 ? "#2D5A27" : "#E06031"}, labelPos)));
       });
     } else {
       // all businesses faint, current highlighted
       BUSINESSES.forEach(function(b){
-        if(b.id===CURRENT_ID) pinsG.appendChild(pinEl(b,{active:true,label:"1",color:"#2D5A27",labelX:42,labelY:40,anchor:"start"}));
+        if(b.id===CURRENT_ID) pinsG.appendChild(pinEl(b,{active:true,label:"1",color:"#2D5A27",labelX:42,labelY:52,anchor:"start"}));
         else pinsG.appendChild(pinEl(b,{active:false}));
       });
     }
