@@ -1,0 +1,95 @@
+{
+  "disclaimer": "Datos sinteticos para demo de hackaton",
+  "businesses": [
+    {
+      "id": "rv-001",
+      "name": "Bochinche Ladera Viva",
+      "category": "bochinche",
+      "municipality": "Santa Brigida",
+      "lat": 28.0315,
+      "lng": -15.5001,
+      "story": "Cocina canaria y vino de cosecha local en un entorno familiar.",
+      "tags": [
+        "vino blanco",
+        "comida tradicional",
+        "familiar"
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "rv-002",
+      "name": "Bodega Barranco Norte",
+      "category": "bodega",
+      "municipality": "Santa Brigida",
+      "lat": 28.038,
+      "lng": -15.507,
+      "story": "Pequeña bodega de paisaje volcanico con variedades locales.",
+      "tags": [
+        "vino tinto",
+        "viñedo",
+        "paisaje"
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "rv-003",
+      "name": "Queseria Altos del Monte",
+      "category": "queseria",
+      "municipality": "Vega de San Mateo",
+      "lat": 28.0101,
+      "lng": -15.532,
+      "story": "Quesos artesanos elaborados en medianias.",
+      "tags": [
+        "queso curado",
+        "producto local",
+        "artesania alimentaria"
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "rv-004",
+      "name": "Taller Almagre",
+      "category": "artesania",
+      "municipality": "Santa Brigida",
+      "lat": 28.029,
+      "lng": -15.496,
+      "story": "Ceramica y piezas inspiradas en paisaje y tradiciones canarias.",
+      "tags": [
+        "artesania",
+        "regalo",
+        "ceramica"
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "rv-005",
+      "name": "Mercado Raices",
+      "category": "mercado",
+      "municipality": "Vega de San Mateo",
+      "lat": 28.0088,
+      "lng": -15.5338,
+      "story": "Puesto colectivo de productores, sabores y productos de cercania.",
+      "tags": [
+        "mercado",
+        "km0",
+        "gourmet"
+      ],
+      "synthetic": true
+    },
+    {
+      "id": "rv-006",
+      "name": "Enoteca Camino Vivo",
+      "category": "enoteca",
+      "municipality": "Santa Brigida",
+      "lat": 28.034,
+      "lng": -15.502,
+      "story": "Seleccion de vinos de Gran Canaria y relatos de sus productores.",
+      "tags": [
+        "enoteca",
+        "degustacion",
+        "regalo"
+      ],
+      "synthetic": true
+    }
+  ]
+}

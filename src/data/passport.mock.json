@@ -1,0 +1,13 @@
+{
+  "disclaimer": "Demo sin validacion real de visita",
+  "route_name": "Sabores y oficios de medianias",
+  "required_stamps": 3,
+  "current_stamps": 1,
+  "reward": "Detalle patrocinado de producto local",
+  "interests": [
+    "vino",
+    "queso",
+    "artesania"
+  ],
+  "time_minutes": 90
+}

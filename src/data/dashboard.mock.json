@@ -1,0 +1,12 @@
+{
+  "disclaimer": "Metricas simuladas",
+  "period": "90 dias",
+  "qr_scans": 824,
+  "stamps": 518,
+  "routes_started": 276,
+  "routes_completed": 109,
+  "action_rate": 0.31,
+  "top_transition": "vino -> queso",
+  "low_flow_category": "artesania",
+  "recommendation": "Crear una campaña conjunta vino + queso + artesania los fines de semana"
+}
