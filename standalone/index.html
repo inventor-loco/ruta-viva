@@ -376,7 +376,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
           </div>
           <div class="pp-stamps"><i class="on"><svg class="icon"><use href="#i-check"/></svg></i><i>2</i><i>3</i></div>
           <div class="pp-route">
-            <div class="pp-stop"><span class="pin">1</span><div><div class="pt">Bochinche Ladera Viva</div><div class="pm">Santa Brígida · sellado</div></div></div>
+            <div class="pp-stop"><span class="pin">1</span><div><div class="pt">Bodega Comarcal del Guiniguada</div><div class="pm">Santa Brígida · sellado</div></div></div>
             <div class="pp-stop"><span class="pin">2</span><div><div class="pt">Quesería Altos del Monte</div><div class="pm">Vega de San Mateo · 2,4 km</div></div></div>
             <div class="pp-stop"><span class="pin">3</span><div><div class="pt">Bodega Barranco Norte</div><div class="pm">Santa Brígida · 0,9 km</div></div></div>
           </div>
@@ -433,7 +433,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
               <div class="scr-route">Sabores y oficios de medianías<span id="scrStatusTop">Pasaporte demo</span></div>
               <div class="scr-stamps" id="scrStamps"><i>1</i><i>2</i><i>3</i></div>
               <div class="scr-status" id="scrStatus">Activa tu pasaporte</div>
-              <div class="mini-card"><div class="mi"><svg class="icon"><use href="#i-bochinche"/></svg></div><div><div class="mt">Bochinche Ladera Viva</div><div class="ms">Santa Brígida · parada actual</div></div></div>
+              <div class="mini-card"><div class="mi"><svg class="icon"><use href="#i-wine"/></svg></div><div><div class="mt">Bodega Comarcal del Guiniguada</div><div class="ms">Santa Brígida · parada actual</div></div></div>
               <div class="scr-next" id="scrNext">
                 <div class="scr-empty" id="scrEmpty"><div class="be"><svg class="icon"><use href="#i-route"/></svg></div><div>Tu siguiente parada<br>aparecerá aquí</div></div>
               </div>
@@ -489,50 +489,102 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
         <p class="lead-muted">El corredor vinícola y de medianías de la D.O. Gran Canaria. La ruta se dibuja sobre el terreno real cuando generas tu siguiente parada.</p>
       </div>
       <div class="map-card reveal">
-        <svg class="map-svg" id="mapSvg" viewBox="0 0 1000 820" role="img" aria-label="Mapa del corredor vinícola de Gran Canaria">
+        <svg class="map-svg" id="mapSvg" viewBox="0 0 1000 820" role="img" aria-label="Mapa del corredor Santa Brígida, Monte Lentiscal y Vega de San Mateo sobre el Barranco del Guiniguada y la GC-15">
           <defs>
-            <radialGradient id="relief" cx="55%" cy="38%" r="70%">
-              <stop offset="0%" stop-color="#E9EAD8"/>
-              <stop offset="60%" stop-color="#F1EFE5"/>
-              <stop offset="100%" stop-color="#F7F5F0"/>
-            </radialGradient>
+            <linearGradient id="terrain" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#DDE6CB"/>
+              <stop offset="38%" stop-color="#ECEBDD"/>
+              <stop offset="72%" stop-color="#F7F5F0"/>
+              <stop offset="100%" stop-color="#F1EFE6"/>
+            </linearGradient>
+            <linearGradient id="valleyFloor" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#E5DFC8" stop-opacity=".82"/>
+              <stop offset="50%" stop-color="#F5F0DF" stop-opacity=".95"/>
+              <stop offset="100%" stop-color="#E7EFD9" stop-opacity=".78"/>
+            </linearGradient>
           </defs>
-          <rect width="1000" height="820" fill="url(#relief)"/>
-          <!-- relieve / curvas de nivel -->
-          <g fill="none" stroke="#C9D3BF" stroke-width="2" opacity="0.55">
-            <path d="M150 200 C320 120 620 130 820 250 C900 300 880 430 760 470 C560 540 360 470 240 380 C160 320 120 250 150 200Z"/>
-            <path d="M250 250 C400 190 600 200 740 290 C800 330 790 410 700 440 C560 480 410 430 320 370 C260 330 230 290 250 250Z"/>
-            <path d="M360 300 C460 270 580 275 660 325 C700 355 695 400 640 418 C560 442 470 415 415 378 C380 352 340 320 360 300Z"/>
+          <rect width="1000" height="820" fill="url(#terrain)"/>
+
+          <!-- Laderas de medianías: San Mateo más alto al suroeste, bajada hacia Las Palmas al nordeste -->
+          <g opacity=".9">
+            <path d="M0 820 L0 610 C100 560 190 500 296 430 C420 348 540 260 700 176 C810 118 912 70 1000 28 L1000 820 Z" fill="#EEF2DE"/>
+            <path d="M0 820 L0 714 C112 657 230 584 360 492 C500 392 642 302 820 210 C900 168 955 138 1000 104 L1000 820 Z" fill="#DDE8CC" opacity=".72"/>
+            <path d="M0 820 L0 735 C160 690 290 628 414 535 C545 436 680 352 850 270 C918 237 965 212 1000 186 L1000 820 Z" fill="#CAD8B9" opacity=".44"/>
           </g>
-          <!-- barrancos -->
-          <g fill="none" stroke="#B7C3AB" stroke-width="3" opacity="0.6" stroke-linecap="round">
-            <path d="M122 672 C200 560 230 470 300 380 C360 305 520 250 660 127" stroke-dasharray="1 12"/>
-            <path d="M160 636 C260 540 340 470 470 360 C560 285 700 230 798 246" stroke-dasharray="1 14"/>
+
+          <!-- Fondo del valle del Guiniguada -->
+          <path d="M78 728 C164 654 232 584 334 505 C436 426 538 340 658 260 C770 184 876 116 983 57 L1000 98 C890 154 782 222 674 296 C552 379 454 466 356 542 C252 623 170 689 92 758 Z" fill="url(#valleyFloor)" opacity=".9"/>
+
+          <!-- Curvas de nivel reales de valle: no concéntricas, abrazan las laderas -->
+          <g fill="none" stroke="#B8C6A8" stroke-width="2" opacity=".62" stroke-linecap="round">
+            <path d="M24 586 C126 532 232 466 350 382 C474 293 610 214 760 148 C842 112 924 78 992 40"/>
+            <path d="M32 636 C138 579 250 510 374 421 C494 335 625 260 786 188 C866 151 934 118 998 78"/>
+            <path d="M38 684 C156 626 278 551 404 459 C532 365 660 292 828 224 C897 196 956 162 1000 132"/>
+            <path d="M42 734 C182 670 310 592 438 498 C568 401 700 326 866 262 C925 239 972 216 1000 194"/>
+            <path d="M92 790 C228 728 350 654 472 562 C604 464 732 388 898 324 C948 305 982 286 1000 270"/>
           </g>
-          <!-- carretera fina (GC-15 esquemática) -->
-          <path d="M124 659 C260 600 360 520 470 430 C600 325 720 250 930 36" fill="none" stroke="#D8C9A8" stroke-width="6" opacity="0.8"/>
-          <path d="M124 659 C260 600 360 520 470 430 C600 325 720 250 930 36" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="8 10" opacity="0.8"/>
+          <g fill="none" stroke="#D4C19B" stroke-width="1.7" opacity=".52" stroke-linecap="round">
+            <path d="M0 420 C96 374 184 318 282 246 C392 166 526 106 680 58 C768 30 864 16 990 10"/>
+            <path d="M0 468 C112 414 218 348 330 270 C444 191 582 126 736 78 C828 50 918 34 1000 28"/>
+            <path d="M0 520 C126 458 244 388 360 306 C486 218 620 160 780 114 C856 92 928 74 1000 58"/>
+            <path d="M0 574 C132 506 260 430 392 337 C526 242 660 188 824 144 C892 126 948 108 1000 94"/>
+          </g>
+          <g fill="none" stroke="#9AAD8D" stroke-width="1.5" opacity=".46" stroke-linecap="round">
+            <path d="M62 804 C202 740 318 668 428 579 C548 482 674 404 840 338 C910 310 960 286 1000 252"/>
+            <path d="M188 820 C304 754 410 680 514 590 C624 494 746 420 908 362 C950 347 982 330 1000 313"/>
+            <path d="M310 820 C404 754 496 686 598 604 C706 517 812 452 956 402 C976 395 990 388 1000 380"/>
+          </g>
+
+          <!-- Barranco del Guiniguada y tributarios -->
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M96 738 C172 676 218 612 286 558 C356 502 412 452 466 402 C552 322 632 268 724 210 C820 150 896 100 970 62" stroke="#6F8F75" stroke-width="12" opacity=".16"/>
+            <path d="M96 738 C172 676 218 612 286 558 C356 502 412 452 466 402 C552 322 632 268 724 210 C820 150 896 100 970 62" stroke="#52755F" stroke-width="3.4" stroke-dasharray="3 10"/>
+            <path d="M220 676 C268 632 306 604 356 554 C390 520 426 488 466 450" stroke="#7FA18D" stroke-width="2.4" opacity=".7" stroke-dasharray="2 10"/>
+            <path d="M496 518 C548 462 598 426 662 386 C720 350 768 320 820 270" stroke="#7FA18D" stroke-width="2.4" opacity=".7" stroke-dasharray="2 10"/>
+            <path d="M650 160 C680 188 704 206 736 224" stroke="#7FA18D" stroke-width="2" opacity=".55" stroke-dasharray="2 10"/>
+          </g>
+
+          <!-- GC-15 / Carretera del Centro -->
+          <path d="M112 686 C204 650 284 586 360 524 C444 454 514 385 596 318 C674 254 762 188 858 132 C902 106 940 84 972 58" fill="none" stroke="#D8C9A8" stroke-width="12" opacity=".92" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M112 686 C204 650 284 586 360 524 C444 454 514 385 596 318 C674 254 762 188 858 132 C902 106 940 84 972 58" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="11 13" opacity=".92" stroke-linecap="round"/>
+
+          <!-- etiquetas de lectura territorial -->
+          <g font-family="Outfit, system-ui" font-weight="800" font-size="15" fill="#6B6A5E">
+            <text x="456" y="386" transform="rotate(-39 456 386)">Barranco del Guiniguada</text>
+            <text x="590" y="338" transform="rotate(-38 590 338)">GC-15 · Carretera del Centro</text>
+            <text x="104" y="620" fill="#7A8F68">800 m</text>
+            <text x="306" y="485" fill="#8B9B71">650 m</text>
+            <text x="820" y="170" fill="#8B846F">500 m</text>
+            <text x="890" y="42" fill="#8B846F">hacia Las Palmas</text>
+          </g>
 
           <!-- place anchors -->
           <g>
-            <circle cx="712" cy="239" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="712" y="222" text-anchor="middle" font-size="20">Santa Brígida</text>
-            <circle cx="930" cy="36" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="912" y="58" text-anchor="end" font-size="20">Monte Lentiscal</text>
-            <circle cx="122" cy="673" r="5" fill="#2D5A27"/>
-            <text class="place-label" x="122" y="700" text-anchor="middle" font-size="20">Vega de San Mateo</text>
+            <circle cx="585" cy="254" r="5" fill="#2D5A27"/>
+            <text class="place-label" x="622" y="237" text-anchor="start" font-size="20">Santa Brígida</text>
+            <circle cx="894" cy="64" r="5" fill="#2D5A27"/>
+            <text class="place-label" x="876" y="88" text-anchor="end" font-size="20">Monte Lentiscal</text>
+            <circle cx="114" cy="651" r="5" fill="#2D5A27"/>
+            <text class="place-label" x="126" y="684" text-anchor="start" font-size="20">Vega de San Mateo</text>
+            <circle cx="452" cy="376" r="3.8" fill="#6E8B4A"/>
+            <text class="place-label" x="442" y="402" text-anchor="end" font-size="14" opacity=".78">La Angostura</text>
+            <circle cx="340" cy="506" r="3.8" fill="#6E8B4A"/>
+            <text class="place-label" x="318" y="496" text-anchor="end" font-size="14" opacity=".78">Las Meleguinas</text>
           </g>
 
           <!-- route + pins drawn by JS -->
           <g id="rvRoute"></g>
           <g id="rvPins"></g>
 
-          <!-- inset: full island -->
+          <!-- inset: Gran Canaria, zona noreste-centro marcada -->
           <g transform="translate(40,40)">
             <rect x="-12" y="-12" width="186" height="150" rx="12" fill="#fff" opacity="0.92" stroke="#E4E0D4"/>
-            <path d="M82 8 C120 6 150 30 156 64 C160 92 142 116 112 126 C92 132 64 132 44 122 C18 110 8 84 12 58 C16 30 46 10 82 8 Z" fill="#E7EBDC" stroke="#2D5A27" stroke-width="2.5"/>
-            <rect x="96" y="34" width="40" height="34" rx="6" fill="none" stroke="#E06031" stroke-width="2.5"/>
-            <circle cx="116" cy="51" r="4" fill="#E06031"/>
+            <path d="M78 6 C91 4 106 8 119 14 L132 20 C144 30 151 39 157 54 C164 72 158 91 149 104 L139 116 C128 126 112 129 99 135 C84 137 72 132 58 130 C43 126 28 119 19 106 C9 92 6 78 10 62 C13 45 24 31 38 21 C50 13 62 8 78 6 Z" fill="#E7EBDC" stroke="#2D5A27" stroke-width="2.5"/>
+            <path d="M132 20 C149 42 158 66 149 104" fill="none" stroke="#B8C6A8" stroke-width="2" opacity=".7"/>
+            <rect x="96" y="32" width="44" height="38" rx="6" fill="none" stroke="#E06031" stroke-width="2.5"/>
+            <circle cx="118" cy="51" r="4" fill="#E06031"/>
+            <path d="M22 24 L22 10 M22 10 L17 18 M22 10 L27 18" stroke="#2D5A27" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <text x="22" y="36" text-anchor="middle" font-size="10" fill="#2D5A27" font-family="Outfit,system-ui" font-weight="900">N</text>
             <text x="82" y="150" text-anchor="middle" font-size="13" fill="#6B6A5E" font-family="Outfit,system-ui" font-weight="700">Gran Canaria</text>
           </g>
         </svg>
@@ -680,7 +732,7 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
 
   // ---------- DATA (embebida, contrato intacto) ----------
   var BUSINESSES = [
-    {id:"rv-001",name:"Bochinche Ladera Viva",category:"bochinche",municipality:"Santa Brígida",lat:28.0315,lng:-15.5001,story:"Cocina canaria y vino de cosecha local en un entorno familiar.",tags:["vino blanco","comida tradicional","familiar"],synthetic:true},
+    {id:"rv-001",name:"Bodega Comarcal del Guiniguada",category:"bodega",municipality:"Santa Brígida",lat:28.0339,lng:-15.4997,story:"Etiqueta sintética de demo inspirada en bodegas y lagares de medianías.",tags:["vino local","paisaje","medianias"],synthetic:true},
     {id:"rv-002",name:"Bodega Barranco Norte",category:"bodega",municipality:"Santa Brígida",lat:28.038,lng:-15.507,story:"Pequeña bodega de paisaje volcánico con variedades locales.",tags:["vino tinto","viñedo","paisaje"],synthetic:true},
     {id:"rv-003",name:"Quesería Altos del Monte",category:"queseria",municipality:"Vega de San Mateo",lat:28.0101,lng:-15.532,story:"Quesos artesanos elaborados en medianías.",tags:["queso curado","producto local","artesania alimentaria"],synthetic:true},
     {id:"rv-004",name:"Taller Almagre",category:"artesania",municipality:"Santa Brígida",lat:28.029,lng:-15.496,story:"Cerámica y piezas inspiradas en paisaje y tradiciones canarias.",tags:["artesania","regalo","ceramica"],synthetic:true},
@@ -758,8 +810,24 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
   }
 
   // ---------- MAP PROJECTION ----------
-  var MAP={north:28.045,south:28.000,west:-15.540,east:-15.490,w:1000,h:820};
+  var MAP={north:28.049,south:28.000,west:-15.540,east:-15.470,w:1000,h:820};
   function proj(b){ return { x:(b.lng-MAP.west)/(MAP.east-MAP.west)*MAP.w, y:(MAP.north-b.lat)/(MAP.north-MAP.south)*MAP.h }; }
+
+  function fmtPoint(p){ return p.x.toFixed(1)+","+p.y.toFixed(1); }
+
+  function routePath(routeStops){
+    var pts = routeStops.map(function(b){ return proj(b); });
+    if(pts.length<2) return "";
+    var d = "M"+fmtPoint(pts[0]);
+    for(var i=1;i<pts.length;i++){
+      var a = pts[i-1], b = pts[i];
+      var dx = b.x-a.x, dy = b.y-a.y;
+      var c1 = {x:a.x+dx*.34+18, y:a.y+dy*.22-18};
+      var c2 = {x:a.x+dx*.72-18, y:a.y+dy*.82+18};
+      d += " C"+fmtPoint(c1)+" "+fmtPoint(c2)+" "+fmtPoint(b);
+    }
+    return d;
+  }
 
   var pinsG = document.getElementById("rvPins");
   var routeG = document.getElementById("rvRoute");
@@ -786,8 +854,9 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
       t.textContent = label; g.appendChild(t);
       // name tag
       var tag = document.createElementNS(ns,"text");
-      tag.setAttribute("y","48"); tag.setAttribute("text-anchor","middle"); tag.setAttribute("font-size","16");
+      tag.setAttribute("x", opts.labelX || 0); tag.setAttribute("y", opts.labelY || 48); tag.setAttribute("text-anchor", opts.anchor || "middle"); tag.setAttribute("font-size","16");
       tag.setAttribute("class","rv-pin-label"); tag.setAttribute("fill","#2A2A22"); tag.setAttribute("font-weight","700");
+      tag.setAttribute("style","paint-order:stroke;stroke:#F7F5F0;stroke-width:5px;stroke-linejoin:round");
       tag.textContent = b.name; g.appendChild(tag);
     } else {
       var dot = document.createElementNS(ns,"circle");
@@ -807,12 +876,12 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
       var routeStops = [current].concat(recs.slice(0,2));
       // route line
       var ns="http://www.w3.org/2000/svg";
-      var pts = routeStops.map(function(b){ var p=proj(b); return p.x.toFixed(1)+","+p.y.toFixed(1); }).join(" ");
-      var halo = document.createElementNS(ns,"polyline");
-      halo.setAttribute("points",pts); halo.setAttribute("fill","none"); halo.setAttribute("stroke","#fff"); halo.setAttribute("stroke-width","12"); halo.setAttribute("stroke-linecap","round"); halo.setAttribute("stroke-linejoin","round");
+      var d = routePath(routeStops);
+      var halo = document.createElementNS(ns,"path");
+      halo.setAttribute("d",d); halo.setAttribute("fill","none"); halo.setAttribute("stroke","#fff"); halo.setAttribute("stroke-width","12"); halo.setAttribute("stroke-linecap","round"); halo.setAttribute("stroke-linejoin","round");
       routeG.appendChild(halo);
-      var line = document.createElementNS(ns,"polyline");
-      line.setAttribute("points",pts); line.setAttribute("fill","none"); line.setAttribute("stroke","#E06031"); line.setAttribute("stroke-width","6"); line.setAttribute("stroke-linecap","round"); line.setAttribute("stroke-linejoin","round"); line.setAttribute("stroke-dasharray","2 16");
+      var line = document.createElementNS(ns,"path");
+      line.setAttribute("d",d); line.setAttribute("fill","none"); line.setAttribute("stroke","#E06031"); line.setAttribute("stroke-width","6"); line.setAttribute("stroke-linecap","round"); line.setAttribute("stroke-linejoin","round"); line.setAttribute("stroke-dasharray","2 16");
       routeG.appendChild(line);
       // faint non-route businesses
       BUSINESSES.forEach(function(b){
@@ -820,12 +889,17 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
       });
       // route pins (drawn on top)
       routeStops.forEach(function(b,idx){
-        pinsG.appendChild(pinEl(b,{active:true,label:String(idx+1),color: idx===0 ? "#2D5A27" : "#E06031"}));
+        var labelPos = {
+          "rv-001": {labelX:42,labelY:40,anchor:"start"},
+          "rv-002": {labelX:-34,labelY:42,anchor:"end"},
+          "rv-003": {labelX:34,labelY:74,anchor:"start"}
+        }[b.id] || {};
+        pinsG.appendChild(pinEl(b,Object.assign({active:true,label:String(idx+1),color: idx===0 ? "#2D5A27" : "#E06031"}, labelPos)));
       });
     } else {
       // all businesses faint, current highlighted
       BUSINESSES.forEach(function(b){
-        if(b.id===CURRENT_ID) pinsG.appendChild(pinEl(b,{active:true,label:"1",color:"#2D5A27"}));
+        if(b.id===CURRENT_ID) pinsG.appendChild(pinEl(b,{active:true,label:"1",color:"#2D5A27",labelX:42,labelY:40,anchor:"start"}));
         else pinsG.appendChild(pinEl(b,{active:false}));
       });
     }
