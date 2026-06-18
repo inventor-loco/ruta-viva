@@ -143,14 +143,16 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
 .step .sl{font-family:var(--fh);font-weight:800;font-size:17px;color:var(--verde)}
 .step.hl .sl{color:var(--almagre)}
 .step .sd{font-size:13px;color:var(--muted);line-height:1.3}
-.passport-modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+.passport-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
 .passport-mode{background:var(--surface-soft);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 18px;display:flex;align-items:center;gap:13px;box-shadow:var(--shadow-sm)}
 .passport-mode .pm-icon{width:46px;height:46px;border-radius:13px;background:rgba(45,90,39,.08);color:var(--verde);display:flex;align-items:center;justify-content:center;font-size:24px;flex:0 0 auto}
 .passport-mode.physical .pm-icon{background:rgba(224,96,49,.12);color:var(--almagre)}
+.passport-mode.local{background:#fff;border-left:5px solid var(--almagre)}
+.passport-mode.local .pm-icon{background:var(--almagre);color:#fff}
 .passport-mode .pm-title{font-family:var(--fh);font-weight:900;color:var(--verde);font-size:15.5px;line-height:1.1}
 .passport-mode .pm-copy{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.3}
 @media(max-width:860px){.steps{grid-template-columns:repeat(2,1fr)}.steps .step:last-child{grid-column:1/-1}}
-@media(max-width:620px){.passport-modes{grid-template-columns:1fr}.passport-mode{padding:14px 15px}}
+@media(max-width:860px){.passport-modes{grid-template-columns:1fr}.passport-mode{padding:14px 15px}}
 
 /* ============================================================
    DEMO
@@ -260,6 +262,13 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
 .clarify{margin-top:22px;display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--verde);border-radius:var(--radius);padding:18px 22px;font-size:15.5px;color:var(--texto);font-weight:500}
 .clarify .icon{color:var(--verde);font-size:1.5em;flex:0 0 auto}
 .clarify b{color:var(--verde)}
+.wine-bridge{margin-top:22px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;box-shadow:var(--shadow-sm);display:grid;grid-template-columns:auto auto auto 1fr;gap:12px 14px;align-items:center}
+.bridge-node{display:inline-flex;align-items:center;gap:10px;background:var(--surface-soft);border:1px solid var(--border);border-radius:14px;padding:12px 14px;font-family:var(--fh);font-weight:900;color:var(--verde);white-space:nowrap}
+.bridge-node .icon{color:var(--almagre);font-size:22px}
+.bridge-arrow{font-family:var(--fh);font-weight:900;color:var(--almagre);font-size:26px}
+.wine-bridge p{grid-column:1/-1;color:var(--muted);font-size:15px;line-height:1.45}
+.wine-bridge p b{color:var(--verde)}
+@media(max-width:780px){.wine-bridge{grid-template-columns:1fr}.bridge-arrow{display:none}.bridge-node{white-space:normal}}
 
 /* ============================================================
    TERRITORIO / PILOTO
@@ -287,6 +296,12 @@ header{position:sticky;top:0;z-index:60;backdrop-filter:saturate(1.2) blur(8px);
 .roi-metric span{display:block;margin-top:6px;font-size:12.5px;color:var(--muted);font-weight:700;line-height:1.25}
 .roi-note{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.45}
 .roi-note b{color:var(--texto)}
+.digital-boost{margin-top:14px;background:rgba(45,90,39,.05);border:1px solid var(--border);border-radius:14px;padding:15px 16px}
+.digital-boost .db-head{display:flex;align-items:center;gap:9px;font-family:var(--fh);font-weight:900;color:var(--verde);font-size:15px}
+.digital-boost .db-head .icon{color:var(--almagre);font-size:20px}
+.digital-boost p{margin-top:7px;font-size:13.5px;color:var(--texto);line-height:1.38}
+.db-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.db-tags span{background:#fff;border:1px solid var(--border);border-radius:999px;padding:.38em .72em;font-family:var(--fh);font-size:12.5px;font-weight:800;color:var(--verde)}
 
 /* ============================================================
    EQUIPO
@@ -415,6 +430,10 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
         <div class="step"><span class="num">05</span><div class="si"><svg class="icon"><use href="#i-data"/></svg></div><div class="sl">Medimos</div><div class="sd">Datos al territorio</div></div>
       </div>
       <div class="passport-modes reveal" aria-label="Formatos del pasaporte Ruta Viva">
+        <div class="passport-mode local">
+          <div class="pm-icon"><svg class="icon"><use href="#i-bochinche"/></svg></div>
+          <div><div class="pm-title">Pasaporte de guachinches</div><div class="pm-copy">El negocio local auténtico protagoniza la ruta: cada visita suma un sello propio.</div></div>
+        </div>
         <div class="passport-mode">
           <div class="pm-icon"><svg class="icon"><use href="#i-qr"/></svg></div>
           <div><div class="pm-title">Pasaporte digital (QR)</div><div class="pm-copy">Se activa escaneando el QR del local.</div></div>
@@ -659,6 +678,13 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
         <div class="diff"><div class="di"><svg class="icon"><use href="#i-handshake"/></svg></div><h3>Mezclamos gastronomía y comercio</h3><p>Vino, queso, artesanía y mercado en una misma experiencia local.</p></div>
         <div class="diff"><div class="di"><svg class="icon"><use href="#i-chart"/></svg></div><h3>Medimos lo que ocurre</h3><p>Escaneos, sellos y rutas dan al gestor una lectura real del flujo.</p></div>
       </div>
+      <div class="wine-bridge reveal">
+        <div class="bridge-node"><svg class="icon"><use href="#i-wine"/></svg>Bodega conocida</div>
+        <div class="bridge-arrow">→</div>
+        <div class="bridge-node"><svg class="icon"><use href="#i-bochinche"/></svg>Guachinche cercano</div>
+        <div class="bridge-node"><svg class="icon"><use href="#i-cheese"/></svg>Quesería o artesano</div>
+        <p>El visitante que llega por una bodega de la Ruta del Vino descubre el guachinche, la quesería o el artesano cercano. <b>Complementamos la Ruta del Vino de Gran Canaria existente</b> (+50 establecimientos); no afirmamos acuerdo ni participación confirmada.</p>
+      </div>
       <div class="clarify reveal">
         <svg class="icon"><use href="#i-leaf"/></svg>
         <span><b>Complementa la Ruta del Vino de Gran Canaria existente</b> (+50 establecimientos); no la reemplaza.</span>
@@ -691,11 +717,16 @@ footer{border-top:1px solid var(--border);padding:26px 0;background:var(--surfac
               <div class="roi-metric"><b>360 €</b><span>servicio a 24 meses</span></div>
             </div>
             <div class="roi-note"><b>15 € × 24 = 360 €</b>; menos 45 € de alta = 315 € de diferencia sobre el coste de entrada. Pack Digital: 250 € pago único. Estimación de coste, no promesa de ventas.</div>
+            <div class="digital-boost">
+              <div class="db-head"><svg class="icon"><use href="#i-qr"/></svg>Digitalización del guachinche</div>
+              <p>Ficha, historia, QR, fotos y métricas para que el negocio pequeño tenga presencia propia dentro de la ruta.</p>
+              <div class="db-tags"><span>Pack Digital 250 €</span><span>Perfil Pro 15 €/mes</span><span>Sello propio</span></div>
+            </div>
           </div>
         </div>
         <div class="pilot-price">
-          <div class="pl">Hipótesis de piloto</div>
-          <div class="pv">4.900<span style="font-size:.5em"> €</span></div>
+          <div class="pl">Piloto de 90 días — 4.900 €</div>
+          <div class="pv" aria-label="Piloto de 90 días — 4.900 €">4.900<span style="font-size:.5em"> €</span></div>
           <div class="pn">90 días · sin permanencia · sin equity</div>
           <a class="btn btn-primary" href="mailto:hola@rutaviva.app?subject=Solicitar%20piloto%20de%2090%20d%C3%ADas%20-%20Ruta%20Viva&body=Hola%2C%20gestionamos%20una%20ruta%2Fzona%20comercial%20en%20Gran%20Canaria%20y%20queremos%20explorar%20un%20piloto%20de%2090%20d%C3%ADas%20de%20Ruta%20Viva.">Solicitar piloto de 90 días <svg class="icon"><use href="#i-mail"/></svg></a>
           <div class="hint">Abre tu correo · sin formularios, sin compromiso</div>
